@@ -1,0 +1,198 @@
+@CHARSET "UTF-8";
+body{
+	margin: 0 auto;
+	width: 1000px;
+	overflow-x: hidden;
+	
+}
+
+form{
+	padding: 0 30px;
+}
+
+form#sign-in{
+	float: left;
+	height: 400px;
+}
+
+form#sign-up{
+	margin-left: 300px;
+}
+
+form#user-info{
+	float: rigth;
+}
+
+form#logout{
+	float: right;
+	position: relative;
+	top: -20px;
+}
+
+#nikname, input#logout{
+	display: inline-block;
+}
+
+/*
+table {
+	border-collapse: collapse;
+}
+table, td {
+	font-size: 1px;
+	line-height: 55px;
+	min-height: 55px;
+	height: auto!important;
+	height: 55px;
+}*/
+
+table#table-payment-order, table#table-payment-requirement{ border-style: none; margin-bottom: 2px;}
+table#table-payment-requirement-header1, table#table-payment-order-header1, table#table-payment-requirement-header2, table#table-payment-order-header2{ border-style: none; margin-top: 15px;}
+
+table#table-payment-requirement-header1 td, table#table-payment-order-header1 td 
+{
+	width: 210px;
+	padding-left: 24px;
+	
+}
+
+span#document-number{float:right;}
+
+#payment-order, #payment-requirement{
+	min-width: 680px;
+	max-width: 680px;
+	font-size: 10pt;
+}
+
+span#date{
+	text-decoration: underline;
+}
+
+span#tooltip-enter-to-bank, span#tooltip-change-off
+{
+	font-size: 8pt; 
+	position: relative; 
+	left: -85px;
+	top: 13px;
+	border-top: 1px solid black;
+}
+
+span#tooltip-date
+{
+	font-size: 8pt; 
+	position: relative; 
+	left: -45px;
+	top: 13px;
+}
+
+span#tooltip-payment-type 
+{
+	font-size: 8pt; 
+	position: relative; 
+	left: -57px;
+	top: 13px;
+	border-top: 1px solid black;
+}
+
+span#document-number{
+	border: 1px solid black;
+	width: 55px;
+	padding: 3px 4px;
+}
+
+span#number
+{
+	font-size: 12pt; 
+	position: relative; 
+	left: -30px;
+	top: -2px;
+}
+
+span#payers-bank-label, span#addressee-bank-label
+{
+	position:relative;
+	top:19px;
+}
+
+span#addressee-label, span#payer-label {
+	position:relative;
+	top:40px;
+}
+
+span#pay-for-label
+{
+	position:relative;
+	top:48px;
+}
+
+td#td-square
+{
+	border: 1px solid black;
+	min-width: 25px;
+	min-height: 25px;
+	max-width: 25px;
+	max-height: 25px;
+}
+
+td#td-document-type 
+{
+	font-weight: bold;
+	font-size: 12pt;
+	width: 245px; 
+}
+
+td#td-number{ width: 95px;}
+
+td#td-date{ width: 132px; }
+
+td#td-payment-type{ width: 132px; }
+
+td#td-sum-hand-label{ width: 73px; height: 55px}
+
+td#td-payer-inn-1{min-width: 185px; max-height: 55px; }
+td#td-payer-kpp-1{width: 185px; max-height: 55px}
+
+td#td-sum-hand-label, td#td-payer
+{
+	border-bottom: 1px solid black; 
+	border-right: 1px solid black;
+}
+
+td#td-payer, td#td-addressee{ height: 95px; }
+
+td#td-payers-bank, td#td-addressee-bank{ height: 55px; }
+
+td#td-pay-for{ height: 110px; }
+
+
+td#td-sum-hand, td#td-sum, td#td-pay-for, td#td-payers-bank, td#td-addressee-bank, td#td-addressee, td#td-addressee-bank-account, td#td-payer-bank-bank-account{ border-bottom: 1px solid black; }
+
+td#td-addressee-inn, td#td-addressee-kpp, td#td-payer-inn-1, td#td-payer-kpp-1
+{
+	border-bottom: 1px solid black; 
+	border-right: 1px solid black;
+	border-top: 1px solid black;
+}
+
+td#td-sum-label, td#td-payer-bank-account-label, td#td-payer-bik-label, td#td-payer-bank-bank-account-label, 
+td#td-addressee-bik-label, td#td-addressees-bank-bank-account-label, td#td-addressee-bank-account-label,
+td#td-type-pay-label, td#td-period-pay-label, td#td-pay-order-label { border: 1px solid black;}
+
+
+#buttons{
+	float: right;
+}
+a#document-type{
+	display:none;
+	
+}
+input#login{
+	display:none;
+}
+
+form#print-form{
+	padding: 0;
+}
+
+input#button-print{
+	margin-left: 5px;
+}

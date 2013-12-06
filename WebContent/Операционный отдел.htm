@@ -1,0 +1,212 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0048)http://localhost:8082/OperationDepartment/toMain -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Операционный отдел</title>
+<link rel="stylesheet" media="all" type="text/css" href="./Операционный отдел_files/bootstrap.css">
+<link rel="stylesheet" media="all" type="text/css" href="./Операционный отдел_files/app.css">
+<script src="./Операционный отдел_files/jquery-1.10.1.js"></script>
+<script src="./Операционный отдел_files/bootstrap.js"></script>
+<script src="./Операционный отдел_files/app.js"></script>
+</head>
+<body onload="hidePayment();" style=""><a name="type" id="document-type" data="payment-order"></a>
+
+	<div class="page-header" style="display: none;">
+	 	<h1>Операционный отдел<small></small></h1>
+	</div>
+	<input id="login" name="login" type="text" placeholder="Login" value="admin"><br>
+	<form action="http://localhost:8082/OperationDepartment/logout" method="POST" id="logout" style="display: none;">
+		<span class="label label-info"><div name="login" id="nikname">Вы вошли как admin</div></span>
+		<input type="submit" class="btn btn-link" value="Выйти" id="logout">
+	</form>
+	<div id="wrapper" style="display: none;">
+		<ul class="nav nav-tabs nav-justified" id="payments">
+			<li class="active" id="order"><a onclick="changePayment(this);" id="order">Платежное поручение</a></li>
+			<li id="requirement"><a onclick="changePayment(this);" id="requirement">Платежное требование</a></li>
+		</ul>
+		<form action="http://localhost:8082/OperationDepartment/sendPaymentOrder" method="POST" id="send">
+			
+			<!-- send the document to db -->
+			
+			<!-- print the document -->
+			
+		</form>
+		<form action="http://localhost:8082/OperationDepartment/sendPaymentRequirement" method="POST" id="send">
+			<div id="payment-requirement" style="display: none;">
+				<h4 id="title" style="display: none;">Платежное требование</h4>
+				<table  id="payment-requirement-header">
+					<tbody><tr>
+						<td colspan="2"><input type="textfield" name="enter-to-bank" id="enter-to-bank" placeholder="Поступ. в банк плат."></td>
+						<td colspan="2"><input type="textfield" name="accept-end" id="accept-end" placeholder="Оконч. срока акцепта"></td>
+						<td colspan="3"><input type="textfield" name="change-off" id="change-off" placeholder="Списано со сч. плат."></td>
+						<td><span id="document-number">0401061</span></td>
+					</tr>
+					<tr>
+						<td colspan="2">Платежное требование №</td>
+						<td><input type="textfield" name="number" id="number"></td>
+						<td colspan="2"><input type="textfield" name="date" id="date" placeholder="Дата"></td>
+						<td colspan="3"><input type="textfield" name="payment-type" id="payment-type" placeholder="Вид платежа	"></td>
+					</tr>
+				</tbody></table>
+				<table  id="payment-requirement">
+					<tbody><tr>
+						<td>Условие оплаты</td>
+						<td colspan="3"><input type="textfield" name="payment-terms" id="payment-terms"></td>
+						<td>Срок для акцепта</td>
+						<td><input type="textfield" name="accept-period" id="accept-period"></td>
+					</tr>
+					<tr>
+						<td>Сумма прописью</td>
+						<td colspan="5"><input type="textfield" name="sum-hand" id="sum-hand"></td>
+					</tr>
+					<tr>
+						<td>ИНН</td>
+						<td><input type="textfield" name="payer-inn" id="payer-inn"></td>
+						<td>Сумма</td>
+						<td colspan="3"><input type="textfield" name="sum" id="sum" onchange="numberInWords();"></td>
+					</tr>
+					<tr>
+						<td>Плательщик</td>
+						<td><textarea type="textfield" name="payer" id="payer"></textarea></td>
+						<td>Сч. №</td>
+						<td colspan="3"><input type="textfield" name="payer-bank-account" id="payer-bank-account"></td>
+					</tr>
+					<tr>
+						<td rowspan="2">Банк плательщика</td>
+						<td rowspan="2"><textarea type="textfield" name="payers-bank" id="payers-bank"></textarea></td>
+						<td>БИК</td>
+						<td colspan="3"><input type="textfield" name="payer-kpp" id="payer-bik"></td>
+					</tr>
+					<tr>
+						<td>Сч. №</td>
+						<td colspan="3"><input type="textfield" name="payer-bank-bank-account" id="payer-bank-bank-account"></td>
+					</tr>
+					<tr>
+						<td rowspan="2">Банк получателя</td>
+						<td rowspan="2"><textarea type="textfield" name="addressees-bank" id="addressee-bank"></textarea></td>
+						<td>БИК / BIK</td>
+						<td colspan="3"><input type="textfield" name="addressees-kpp" id="addressee-bik"></td>
+					</tr>
+					<tr>
+						<td>Сч. №</td>
+						<td colspan="3"><input type="textfield" name="addressees-bank-bank-account" id="addressees-bank-bank-account"></td>
+					</tr>
+					<tr>
+						<td>ИНН </td>
+						<td><input type="textfield" name="addressee-inn" id="addressee-inn"></td>
+						<td>Сч. № </td>
+						<td colspan="3"><input type="textfield" name="addressee-bank-account" id="addressee-bank-account"></td>
+					</tr>
+					<tr>
+						<td rowspan="3">Получатель </td>
+						<td rowspan="3"><textarea type="textfield" name="addressee" id="addressee"></textarea></td>
+					</tr>
+					<tr>
+						<td>Вид оп.</td>
+						<td><input type="textfield" name="type-pay" id="type-pay"></td>
+						<td>Срок пл.</td>
+						<td><input type="textfield" name="period-pay" id="period-pay"></td>
+					</tr>
+					<tr>
+						<td>Очер. пл.</td>
+						<td><input type="textfield" name="pay-order" id="pay-order"></td>
+					</tr>
+					<tr>
+						<td>Назначение платежа</td>
+						<td colspan="7">
+							<textarea type="textfield" name="pay-for" id="pay-for"></textarea>
+						</td>
+					</tr>
+				</tbody></table>
+			</div>
+			<!-- send the document to db -->
+			<input id="sendRequirement" type="submit" class="btn btn-primary" value="Отправить" onclick="send();" style="display: none;">
+			<!-- print the document -->
+			<input id="printRequirement" type="button" class="btn " value="Предпросмотр печати" onclick="print_preview();" style="display: none;">
+		</form>	
+	</div>
+
+
+<div id="print"><div id="payment-order">
+				<h4 id="title" style="display: none;">Платежное поручение</h4>
+				<table  id="table-payment-order-header1">
+					<tbody><tr>
+						<td id="td-enter-to-bank"><span id="enter-to-bank" name="enter-to-bank">01.01.2013</span><br><span id="tooltip-enter-to-bank">Поступ. в банк плат.</span></td>
+                        <td><span id="td-change-off" name="change-off">01.10.2013</span><br><span id="tooltip-change-off">Списано со сч. плат.</span></td>
+                        <td id="td-document-number" ><span id="document-number">0401060</span></td>
+					</tr>
+                    </tbody></table>
+                <table  id="table-payment-order-header2">
+					<tr>
+						<td colspan="2" id="td-document-type">Платежное поручение №</td>
+						<td id="td-number"><span id="number" name="number">366</span></td>
+						<td id="td-date" colspan="2"><span id="date" name="date">13.06.2013</span><br><span id="tooltip-date">Дата</span></td>
+						<td id="td-payment-type" colspan="1"><span id="payment-type" name="payment-type">перевод</span><br><span id="tooltip-payment-type">Вид платежа</span></td>
+						<td id="td-square"><span id="square" name="square"></span></td>
+					</tr>
+				</tbody></table>
+				<table  id="table-payment-order">
+					<tbody><tr>
+                        <td id="td-sum-hand-label"><span id="sum-hand-label">Сумма прописью</span></td>
+						<td id="td-sum-hand" colspan="7"><span id="sum-hand" name="sum-hand">две тысячи пятьсот рублей</span></td>
+					</tr>
+					<tr>
+                        
+						<td colspan="2" id="td-payer-inn-1"><span id="payer-inn-label">ИНН </span><span id="Span1" name="payer-inn">186256985458</span></td>
+                        <td colspan="2" id="td-payer-kpp-1"><span id="payer-kpp-label">КПП </span><span id="payer-kpp" name="payer-kpp">458965894</span></td>
+						<td id="td-sum-label"><span id="sum-label">Сумма</span></td>
+                        <td id="td-sum" colspan="3"><span id="sum" name="sum">2500</span></td>
+					</tr>
+					<tr>
+						<td id="td-payer" colspan="4"><span id="payer-label">Плательщик</span><textarea type="textfield" name="payer" id="payer"></textarea></td>
+						<td id="td-payer-bank-account-label"><span id="payer-bank-account-label">Сч. №</span></td>
+                        <td id="td-payer-bank-account" colspan="3"><span id="payer-bank-account" name="payer-bank-account">2564897568948567895</span></td>
+					</tr>
+					<tr>
+						<td id="td-payers-bank" colspan="4" rowspan="2"><span id="payers-bank-label">Банк плательщика</span><textarea type="textfield" name="payers-bank" id="payers-bank"></textarea></td>
+						<td id="td-payer-bik-label"><span id="payer-bik-label">БИК</span></td>
+                        <td id="td-payer-bik" colspan="3"><span id="payer-bik" name="payer-kpp">045001000</span></td>
+					</tr>
+					<tr>
+						<td id="td-payer-bank-bank-account-label">Сч. №</td>
+						<td id="td-payer-bank-bank-account" colspan="3"><span id="payer-bank-bank-account" name="payer-bank-bank-account">456985698569856487598</span></td>
+					</tr>
+					<tr>
+						<td id="td-addressee-bank" colspan="4" rowspan="2"><span id="addressee-bank-label" >Банк получателя</span><textarea type="textfield" name="addressees-bank" id="addressee-bank"></textarea></td>
+						<td id="td-addressee-bik-label"><span id="addressee-bik-label">БИК</span></td>
+                        <td id="td-addressee-bik" colspan="4"><span id="addressee-bik" name="addressees-kpp">045012356</span></td>
+					</tr>
+					<tr>
+                        <td id="td-addressees-bank-bank-account-label"><span id="addressees-bank-bank-account-label">Сч. № </span></td>
+						<td id="td-addressees-bank-bank-account" colspan="4"><span id="addressees-bank-bank-account" name="addressees-bank-bank-account">75846374836592548694</span></td>
+					</tr>
+					<tr>
+						
+						<td id="td-addressee-inn" colspan="2"><span id="addressee-inn-label">ИНН  </span><span id="addressee-inn" name="addressee-inn">186954856985</span></td>
+						<td id="td-addressee-kpp" colspan="2"><span id="addressee-kpp-label">КПП  </span><span id="addressee-kpp" name="addressee-kpp">458695874</span></td>
+						<td id="td-addressee-bank-account-label"><span id="addressee-bank-account-label">Сч. № </span></td>
+						<td id="td-addressee-bank-account" colspan="3"><span id="addressee-bank-account" name="addressee-bank-account">14768456854764859594</span></td>
+					</tr>
+					<tr>
+						<td id="td-addressee" colspan="4" rowspan="3"><span id="addressee-label" >Получатель</span><textarea type="textfield" name="addressee" id="addressee"></textarea></td>
+					</tr>
+					<tr>
+                        <td id="td-type-pay-label"><span id="type-pay-label">Вид оп.</span></td>
+						<td id="td-type-pay"><span id="type-pay" name="type-pay">наличные</span></td>
+                        <td id="td-period-pay-label"><span id="period-pay-label">Срок пл.</span></td>
+						<td id="td-period-pay"><span id="period-pay" name="period-pay">12.11.2013</span></td>
+					</tr>
+					<tr>
+                        <td></td>
+                        <td></td>
+						<td id="td-pay-order-label"><span id="pay-order-label">Очер. пл.</span></td>
+						<td id="td-pay-order"><span id="pay-order" name="pay-order">1</span></td>
+					</tr>
+					<tr>
+						<td colspan="8" id="td-pay-for">
+                            <span id="pay-for-label">Назначение платежа</span>
+							<textarea type="textfield" name="pay-for" id="pay-for"></textarea>
+						</td>
+					</tr>
+				</tbody></table>
+			</div></div><form id="print-form" action="./Операционный отдел_files/Операционный отдел.htm" method="post"><input id="button-back" type="submit" class="btn " value="Назад" "=""><input id="button-print" type="button" class="btn btn-primary" value="Печать" "="" onclick="print();"></form></body></html>
